@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
+
 export default function TodoInput() {
 
     const [cache, setCache] = useState([])
@@ -46,8 +47,11 @@ export default function TodoInput() {
     }
 
     useEffect(() => {
-        const parse = JSON.parse(localStorage.getItem("todoList"))
-        setCache(parse)
+        const localcagir = localStorage.getItem("todoList")
+        if(localcagir){
+            const parslama = JSON.parse(localcagir)
+            setCache(parslama)
+        }
     }, [])
 
 
@@ -58,8 +62,6 @@ export default function TodoInput() {
         <>
             <input onChange={girilenInput} value={input} type="text" placeholder='Todonuzu Giriniz' />
             <button onClick={ekle}>Ekle</button>
-
-
             <ul>
                 {cache.map((veriler) => {
                     return <li key={Math.floor(Math.random() * 10000000)}>{veriler.content}
@@ -68,8 +70,6 @@ export default function TodoInput() {
                     </li>
                 })}
             </ul>
-
-
         </>
     )
 }
