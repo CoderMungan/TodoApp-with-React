@@ -6,7 +6,6 @@ export default function TodoInput() {
     const [cache, setCache] = useState([])
     const [input, setInput] = useState("")
 
-    // localStorage.setItem("todoList",JSON.stringify(cache))
 
     const girilenInput = (e) => {
         const gelenDeger = e.target.value
